@@ -1,0 +1,40 @@
+name: AI Session (对话记录)
+description: Log an AI collaboration session with objectives, constraints, and outcomes.
+title: "[AI Session] <short title>"
+labels: ["ai-session"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        请在下方填写关键信息。提交 Issue 后，可在 PR 中引用本 Issue 与会话日志文件。
+  - type: input
+    id: session_id
+    attributes:
+      label: Session ID
+      description: 如 2025-08-09_session-001_title
+      placeholder: 2025-08-09_session-001_title
+    validations:
+      required: true
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective (目标)
+      description: 此次与 AI 协作要达成的具体目标
+    validations:
+      required: true
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Constraints & Environment (约束与环境)
+      description: 网络、工具可用性、资源、数据路径等
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary (会话要点)
+      description: 关键结论/决策/后续动作
+  - type: textarea
+    id: links
+    attributes:
+      label: Links
+      description: 会话日志文件、相关代码提交、报告等链接

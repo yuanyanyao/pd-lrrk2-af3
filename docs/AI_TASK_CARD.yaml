@@ -1,0 +1,44 @@
+# --- AI_TASK_CARD v1.1 ---
+project: PD-LRRK2-AF3 (LRRK2 × AChR computational screening)
+owner: yuanyanyao
+my_role: Graduate student (Neurobiology) / 研究生（神经生物学）
+current_goal: >
+  Complete/完善 prediction & interface analysis scripts so the Snakemake pipeline
+  runs end-to-end on local GPU and generates a Top-10 candidate report with interface residues.
+
+context_summary: >
+  AF3 local is unavailable; prefer AF3 API if token available, otherwise fallback
+  to AF2-Multimer or ESMFold+Dock. Codex is offline and for editing only;
+  computation happens on local RTX 4060 Ti / networked node.
+
+runtime_env:
+  network: offline_on_codex, online_on_local
+  tools: [mamba, conda, snakemake, python3.11]
+  gpu: true
+  vram: 16GB   # set to your actual VRAM (e.g., 8GB)
+  os: Windows/WSL2 or Linux
+
+data_locations:
+  sequences: data/sequences/
+  msa_cache: data/msa/
+  outputs: results/
+
+constraints:
+  - No online ad-hoc installs (use environment.yml only)
+  - Ensure reproducibility (record commands, versions, random seeds)
+
+deliverables:
+  - Runnable Snakemake pipeline (commands + artifact list)
+  - Updated key scripts with explanations
+  - Example report at results/reports/final_report.html
+
+acceptance_criteria:
+  - `snakemake -j 8 --use-conda` completes successfully
+  - Produce summary.csv with ≥3 metrics (ΔSASA, contacts, HBonds, etc.)
+  - Report contains Top-10 table and interface residue list
+
+ask_now:
+  - Review README/structure; list missing items and minimal implementations
+  - Provide stepwise patch plan + code skeletons (focus predict & analysis)
+  - Provide directly runnable commands for my environment
+# --- END ---
